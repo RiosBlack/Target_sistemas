@@ -80,3 +80,52 @@ public class Main {
 
 }
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## Pergunta 3:
+3) Dado um vetor que guarda o valor de faturamento diário de uma distribuidora, faça um programa, na linguagem que desejar, que calcule e retorne:
+• O menor valor de faturamento ocorrido em um dia do mês;
+• O maior valor de faturamento ocorrido em um dia do mês;
+• Número de dias no mês em que o valor de faturamento diário foi superior à média mensal.
+
+IMPORTANTE:
+a) Usar o json ou xml disponível como fonte dos dados do faturamento mensal;
+b) Podem existir dias sem faturamento, como nos finais de semana e feriados. Estes dias devem ser ignorados no cálculo da média;
+
+
+Resposta:
+
+* Código em JavaScript:
+* Dados do json enviado pela empresa.
+
+let Json = require('./dados.json');
+
+const maiorValor = Json.reduce(function (prev, current) {
+    return prev.valor > current.valor ? prev : current;
+});
+
+
+const menorValor = Json.reduce(function (prev, current) {
+    return prev.valor < current.valor ? prev : current;
+});
+
+
+function diasMediaMensal() {
+    var mediaMesal = 20865.37;
+    let quantidade = 0;
+    for (let i = 0; i < Json[29].dia; i++) {
+        if (Json[i].valor > mediaMesal) {
+            quantidade++;
+        }
+    }
+    return quantidade;
+}
+
+console.log('O menor valor ocorreu em', menorValor);
+console.log('O maior valor correu em', maiorValor);
+console.log(
+    'O número da faturamento diário foi maior que o mensal em:',
+    diasMediaMensal(),
+    'dias'
+);
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
