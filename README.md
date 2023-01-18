@@ -164,3 +164,39 @@ public class Main {
         System.out.println("O percentual de representação dos estados são: ES: " + mediaES + "| MG: " + mediaMG + "| RJ: " + mediaRJ + "| SP: " + mediaSP + "| Outros: " + mediaOutros);
     }
 }
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+## Pergunta 5:
+5) Escreva um programa que inverta os caracteres de um string.
+
+IMPORTANTE:
+a) Essa string pode ser informada através de qualquer entrada de sua preferência ou pode ser previamente definida no código;
+b) Evite usar funções prontas, como, por exemplo, reverse;
+
+
+#Resposta:
+* Código em Java
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Digite um nome para ser invertido");
+        String str = scanner.next();
+        char[] ch = str.toCharArray();
+        int begin = 0;
+        int end = ch.length-1;
+        char temp;
+        while(end>begin){
+            temp = ch[begin];
+            ch[begin] = ch[end];
+            ch[end] = temp;
+            end--;
+            begin++;
+        }
+        str = new String(ch);
+        System.out.println(str);
+    }
+}
